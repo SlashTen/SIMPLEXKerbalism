@@ -3,6 +3,7 @@
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <KspDir>C:\KSP-Dev</KspDir>
+    <KspGamingDir>C:\Kerbal Space Program</KspGamingDir>
     <GameDataDir>..\KerbalismSimplex</GameDataDir> <!-- "." does not work. Thanks Microsoft! -->
     <DestGameDataDir>KerbalismSimplex</DestGameDataDir>
   </PropertyGroup>
@@ -12,5 +13,12 @@
       <Output TaskParameter="Include" ItemName="GameDataFiles" />
     </CreateItem>
     <Copy SourceFiles="@(GameDataFiles)" DestinationFolder="$(KspDir)\GameData\$(DestGameDataDir)\%(GameDataFiles.RecursiveDir)" SkipUnchangedFiles="true" />
+  </Target>
+  <Target Name="DeployGaming">
+    <Message Text="[Mod] Copying gamedata files in KSP (gaming).." />
+    <CreateItem Include="$(GameDataDir)\**\*.*" Exclude="$(GameDataDir)\**\.git\**">
+      <Output TaskParameter="Include" ItemName="GameDataFiles" />
+    </CreateItem>
+    <Copy SourceFiles="@(GameDataFiles)" DestinationFolder="$(KspGamingDir)\GameData\$(DestGameDataDir)\%(GameDataFiles.RecursiveDir)" SkipUnchangedFiles="true" />
   </Target>
 </Project>
