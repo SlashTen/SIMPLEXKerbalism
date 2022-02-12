@@ -4,7 +4,7 @@
 //	*** Kerbalism SIMPLEX   ***
 //	=========================== by theJesuit
 //
-//	*** VERSION 3.6.20211031
+//	*** VERSION 3.7.20220129
 //	*** Licence Unlicence http://unlicense.org/
 //		
 //	***	Requires Module Manager for KSP - check out the Forums https://forum.kerbalspaceprogram.com
@@ -78,26 +78,26 @@ Profile
 				on_pod = 50.0
 				on_eva = 33.0
 				on_rescue = 10000.0
-				low_message = $VESSEL batteries are almost empty@<i>We are squeezing the last bit of juice</i>|$VESSEL batteries are almost empty@<i>Shutting down non-essential systems</i>
-				empty_message = There is no more ElectricCharge on $VESSEL@<i>Life support systems are off</i>|There is no more ElectricCharge on $VESSEL@<i>We lost control</i>
-				refill_message = $VESSEL batteries recharged@<i>The crew is allowed music again</i>|$VESSEL batteries recharged@<i>Systems are back online</i>
+				low_message = #KERBALISM_low_battery
+				empty_message = #KERBALISM_empty_battery
+				refill_message = #KERBALISM_refill_battery
 			}
 		Supply
 			{	resource = Air
 				on_pod = 5
 				on_eva = .33
 				on_rescue = 50
-				low_message = Air reserves are dangerously low on $VESSEL@<i>There is mild panic among the crew</i>
-				empty_message = There is no more good Air on $VESSEL@<i>Everybody stop breathing</i>
-				refill_message = $VESSEL Air reserves restored@<i>The crew is taking a breather</i>
+				low_message = #KERBALISM_low_oxygen
+				empty_message = #KERBALISM_empty_oxygen
+				refill_message = #KERBALISM_refill_oxygen
 			}
 		Supply
 			{	resource = Consumables
 				on_pod = 5
 				on_rescue = 50.0
-				low_message = Food and water reserves are getting low on $VESSEL@<i>Anything digestable is being scrutinized</i>
-				empty_message = There are no more Consumables on $VESSEL@<i>The crew prepare for the inevitable</i>
-				refill_message = $VESSEL Consumable reserves restored@<i>Double snack rations for everybody</i>
+				low_message = #KERBALISM_low_food
+				empty_message = #KERBALISM_empty_food
+				refill_message = #KERBALISM_refill_food
 			}
 			
 //	*** RULES
