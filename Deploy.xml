@@ -4,21 +4,20 @@
   <PropertyGroup>
     <KspDir>C:\KSP-Dev</KspDir>
     <KspGamingDir>C:\Kerbal Space Program</KspGamingDir>
-    <GameDataDir>..\KerbalismSimplex</GameDataDir> <!-- "." does not work. Thanks Microsoft! -->
-    <DestGameDataDir>KerbalismSimplex</DestGameDataDir>
+    <RepositoryDir>..\SIMPLEXKerbalism</RepositoryDir> <!-- "." does not work. Thanks Microsoft! -->
   </PropertyGroup>
   <Target Name="DeployDev">
     <Message Text="[Mod] Copying gamedata files in KSP.." />
-    <CreateItem Include="$(GameDataDir)\**\*.*" Exclude="$(GameDataDir)\**\.git\**">
+    <CreateItem Include="$(RepositoryDir)\GameData\**\*.*">
       <Output TaskParameter="Include" ItemName="GameDataFiles" />
     </CreateItem>
-    <Copy SourceFiles="@(GameDataFiles)" DestinationFolder="$(KspDir)\GameData\$(DestGameDataDir)\%(GameDataFiles.RecursiveDir)" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(GameDataFiles)" DestinationFolder="$(KspDir)\GameData\%(RecursiveDir)" SkipUnchangedFiles="true" />
   </Target>
   <Target Name="DeployGaming">
     <Message Text="[Mod] Copying gamedata files in KSP (gaming).." />
-    <CreateItem Include="$(GameDataDir)\**\*.*" Exclude="$(GameDataDir)\**\.git\**">
+    <CreateItem Include="$(RepositoryDir)\GameData\**\*.*">
       <Output TaskParameter="Include" ItemName="GameDataFiles" />
     </CreateItem>
-    <Copy SourceFiles="@(GameDataFiles)" DestinationFolder="$(KspGamingDir)\GameData\$(DestGameDataDir)\%(GameDataFiles.RecursiveDir)" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(GameDataFiles)" DestinationFolder="$(KspGamingDir)\GameData\%(RecursiveDir)" SkipUnchangedFiles="true" />
   </Target>
 </Project>
