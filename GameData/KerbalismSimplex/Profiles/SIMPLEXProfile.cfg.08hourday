@@ -4,7 +4,7 @@
 //	*** Kerbalism SIMPLEX   ***
 //	=========================== by theJesuit
 //
-//	*** VERSION 3.6.20211031
+//	*** VERSION 3.7.20220129
 //	*** Licence Unlicence http://unlicense.org/
 //		
 //	***	Requires Module Manager for KSP - check out the Forums https://forum.kerbalspaceprogram.com
@@ -101,7 +101,8 @@ Profile
 				on_rescue = 10000.0
 				low_message = #KERBALISM_low_battery
 				empty_message = #KERBALISM_empty_battery
-				refill_message = #KERBALISM_refill_battery			}
+				refill_message = #KERBALISM_refill_battery
+			}
 		Supply
 			{	resource = Air
 				on_pod = 5
