@@ -15,7 +15,9 @@
   </Target>
   <Target Name="DeployGaming">
     <Message Text="[Mod] Copying gamedata files in KSP (gaming).." />
-    <CreateItem Include="$(RepositoryDir)\GameData\**\*.*">
+    <CreateItem 
+      Include="$(RepositoryDir)\GameData\**\*.*" 
+      Exclude="$(RepositoryDir)\GameData\KerbalismSimplex\Settings.cfg">
       <Output TaskParameter="Include" ItemName="GameDataFiles" />
     </CreateItem>
     <Copy SourceFiles="@(GameDataFiles)" DestinationFolder="$(KspGamingDir)\GameData\%(RecursiveDir)" SkipUnchangedFiles="true" />
