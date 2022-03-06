@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <KspDir>C:\KSP-Dev</KspDir>
+    <KspGamingDir>C:\Kerbal Space Program</KspGamingDir>
+    <RepositoryDir>..\SIMPLEXKerbalism</RepositoryDir> <!-- "." does not work. Thanks Microsoft! -->
+  </PropertyGroup>
+  <Target Name="DeployDev">
+    <Message Text="[Mod] Copying gamedata files in KSP.." />
+    <CreateItem 
+      Include="$(RepositoryDir)\GameData\**\*.*"
+      Exclude="$(RepositoryDir)\GameData\KerbalismSimplex\Settings.cfg">
+      <Output TaskParameter="Include" ItemName="GameDataFiles" />
+    </CreateItem>
+    <Copy SourceFiles="@(GameDataFiles)" DestinationFolder="$(KspDir)\GameData\%(RecursiveDir)" SkipUnchangedFiles="true" />
+  </Target>
+  <Target Name="DeployGaming">
+    <Message Text="[Mod] Copying gamedata files in KSP (gaming).." />
+    <CreateItem 
+      Include="$(RepositoryDir)\GameData\**\*.*" 
+      Exclude="$(RepositoryDir)\GameData\KerbalismSimplex\Settings.cfg">
+      <Output TaskParameter="Include" ItemName="GameDataFiles" />
+    </CreateItem>
+    <Copy SourceFiles="@(GameDataFiles)" DestinationFolder="$(KspGamingDir)\GameData\%(RecursiveDir)" SkipUnchangedFiles="true" />
+  </Target>
+</Project>
